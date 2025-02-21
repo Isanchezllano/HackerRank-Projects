@@ -5,7 +5,7 @@ def test_is_leap():
     year = 1900
     result = is_leap(year)
 
-    assert result == True
+    assert result == False
 
 def test_is_leap2():
     year = 2024
