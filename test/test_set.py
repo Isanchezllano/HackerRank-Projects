@@ -1,15 +1,18 @@
-from set import me_la_vuela
+from set import set_remove_discard_pop
+from io import StringIO
 
 
-def test_me_la_vuela():
-    total_numbers = "9"
-    numbers= "1 2 3 4 5 6 7 8 9"
-    total_commands = "10"
-    commands= "pop, remove 9, discard 9, discard 8, remove 7, pop, discard 6, remove 5, pop, discard 5"
+def test_me_la_vuela_2(monkeypatch, capsys):
+    inputs = """5
+1 2 3 4 5
+3
+remove 3
+discard 5
+pop""".split("\n")
 
-    result = me_la_vuela(total_numbers, numbers, total_commands, commands)
+    monkeypatch.setattr('sys.stdin', StringIO('\n'.join(inputs)))
 
-    assert result == 4
+    set_remove_discard_pop()
 
-
-
+    captured = capsys.readouterr()
+    assert captured.out.strip() == "2"
