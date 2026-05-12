@@ -1,4 +1,4 @@
-from get_the_day import find_day  # Replace 'your_module' with the actual module name
+from get_the_day import find_day
 
 def test_find_day():
     assert find_day("08 05 2015") == "WEDNESDAY"
